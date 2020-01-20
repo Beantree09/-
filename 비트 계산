@@ -1,0 +1,40 @@
+#pragma warning (disable : 4996)
+#include <stdio.h>
+
+int main() {
+	int num1, num2;
+	char t;
+	int x;
+
+	printf("수식을 입력하시오 : ");
+	scanf("%d %c%*c %d", &num1, &t, &num2);
+
+	switch (t) {
+	case '+':
+		printf("%d %c %d = %d", num1, t, num2, num1 + num2);
+		break;
+	case '-':
+		printf("%d %c %d = %d", num1, t, num2, num1 - num2);
+		break;
+	case '*':
+		printf("%d %c %d = %d", num1, t, num2, num1 * num2);
+		break;
+	case '/':
+		printf("%d %c %d = %d", num1, t, num2, num1 / num2);
+		break;
+	case '%':
+		printf("%d %c %d = %d", num1, t, num2, num1 % num2);
+		break;
+	case '#':
+		x = num1 ^ num2;
+		x = (x & 0x55555555) + ((x >> 1) & 0x55555555);
+		x = (x & 0x33333333) + ((x >> 2) & 0x33333333);
+		x = (x & 0x0F0F0F0F) + ((x >> 4) & 0x0F0F0F0F);
+		x = (x & 0x00FF00FF) + ((x >> 8) & 0x00FF00FF);
+		x = (x & 0x0000FFFF) + ((x >> 16) & 0x0000FFFF);
+
+		printf("%d %c %d = %d", num1, t, num2, x);
+		break;
+}
+return 0;
+}
